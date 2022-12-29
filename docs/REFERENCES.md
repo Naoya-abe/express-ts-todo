@@ -19,7 +19,8 @@
 ## Terraform関連
 - [【Terraform 入門】AWS の VPC と EC2 を構築してみる](https://kacfg.com/terraform-vpc-ec2/)
 
-## フロントエンド関連(後々フロントエンドのレポジトリに移す)
+## その他
+- [shields.ioを使って技術系アイコンを量産した](https://qiita.com/s-yoshiki/items/436bbe1f7160b610b05c)
 - [AWS Amplify × Next.js で Server Side Rendering のデプロイおよび CI/CD 環境を構築する](https://whnyab.com/amplify-ssr-cicd/)
 - [Amplify Console と CloudFront+S3 のユースケースの違い](https://go-to-k.hatenablog.com/entry/2021/08/08/022528)
 - [React の環境変数を dotenv-cli で切り替えてみた](https://dev.classmethod.jp/articles/react-dotenv-cli/)
