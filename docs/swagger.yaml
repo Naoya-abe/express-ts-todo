@@ -139,6 +139,23 @@ paths:
       tags:
         - todo
       description: 新規にTodoを作成
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                details:
+                  type: string
+              required:
+                - title
+            examples:
+              Example 1:
+                value:
+                  title: ランニング
+                  details: 毎朝6時に起きてランニングをする。
 tags:
   - name: todo
     description: todo関連のAPI
