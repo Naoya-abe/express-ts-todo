@@ -15,6 +15,11 @@
 - [Supertestを使ったテスト構築方法](https://zenn.dev/kento_mm_ninw/articles/6308dd8cfeb916)
 - [GitHub-supertest](https://github.com/ladjs/supertest)
 
+## ソフトウェアアーキテクチャ関連
+- [MVCについて軽く触れる](https://www.w2solution.co.jp/tech/2019/09/27/mvc%e3%81%a4%e3%81%84%e3%81%a6%e8%bb%bd%e3%81%8f%e8%a7%a6%e3%82%8c%e3%82%8b/)
+- [MVC + Sについて軽く触れる](https://www.w2solution.co.jp/tech/2019/10/25/mvc-s%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%BB%BD%E3%81%8F%E8%A7%A6%E3%82%8C%E3%82%8B/)
+- [[Node.js]Node.js+ExpressでMVCっぽく書いてみる](https://swallow-incubate.com/archives/blog/20190425)
+
 ## SwaggerUI関連
 - [How to add Swagger UI to an existing Node.js and Express.js project](https://levelup.gitconnected.com/how-to-add-swagger-ui-to-existing-node-js-and-express-js-project-2c8bad9364ce)
 
