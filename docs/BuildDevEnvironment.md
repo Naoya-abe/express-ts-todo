@@ -91,7 +91,7 @@ Now using node v18.12.1 (npm v8.19.2)
 - 以下のコマンドを入力して任意のディレクトリに本レポジトリを clone してください
 
 ```
-$ git clone https://github.com/ConsensusBaseDidEdu/did-vc-proto1-backend.git
+$ git clone https://github.com/Naoya-abe/express-ts-todo.git
 ```
 
 ## アプリケーションの立ち上げ
@@ -100,7 +100,7 @@ $ git clone https://github.com/ConsensusBaseDidEdu/did-vc-proto1-backend.git
 - Docker desktop が立ち上がっていることを確認してから以下のコマンドを入力してください
 
 ```
-$ cd proto1-backend-sample
+$ cd express-ts-todo
 $ npm i
 $ docker compose -f docker-compose.dev.yml up
 ```

@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  app:
+    # コンテナの名前を設定
+    container_name: express-ts-todo-app
+    # 同ディレクトリ内のDockerfileを参照してビルドを行う
+    build: .
+    # ローカルPCのexpress-ts-todoディレクトリとDockerコンテナ内のexpress-ts-todoディレクトリを同期させる
+    volumes:
+      - .:/express-ts-todo
+    # コンテナが立ち上がったときに下記コマンドを実行する（Dockerfileに書かれたものより優先される）
+    command: npm run dev
+    # ローカルPCの8080番ポートとDockerコンテナの8080番ポートを接続する
+    ports:
+      - 8080:8080
+    # 利用するDockerNetworkを指定
+    networks:
+      - express-ts-todo-nw
+# Docker上で本コンテナが設置されるNetworkを作成
+networks:
+  express-ts-todo-nw:

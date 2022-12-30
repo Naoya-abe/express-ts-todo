@@ -15,6 +15,8 @@
 - [異なる Docker 環境どうしを Docker ネットワークで連携する方法](https://nishinatoshiharu.com/external-docker-network/)
 - [【Docker】docker-compose "exec" について](https://kuzunoha-ne.hateblo.jp/entry/2019/02/08/203000)
 - [OCI runtime exec failed: exec failed: container_linux.go:344: starting container process](https://stackoverflow.com/questions/55378420/oci-runtime-exec-failed-exec-failed-container-linux-go344-starting-container)
+- [CPUアーキテクチャの種類(x86, x64, arm)](https://www.wakuwakubank.com/posts/809-it-cpu-x86-x64-arm/)
+- [Architectures other than amd64?](https://github.com/docker-library/official-images#architectures-other-than-amd64)
 
 ## Terraform関連
 - [【Terraform 入門】AWS の VPC と EC2 を構築してみる](https://kacfg.com/terraform-vpc-ec2/)
