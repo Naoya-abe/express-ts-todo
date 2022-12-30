@@ -14,7 +14,7 @@ servers:
   - url: 'https://api.sample-server.com/v1'
     description: Production server
 paths:
-  /todos:
+  /todo/list:
     get:
       summary: Your GET endpoint
       tags:
@@ -37,8 +37,9 @@ paths:
                     - id: 2
                       title: 英会話
                       details: 毎日就業後に英会話をする。
-      operationId: get-todos
+      operationId: get-todo-list
       description: Todo一覧の取得
+    parameters: []
   '/todo/{todoId}':
     get:
       summary: Your GET endpoint
