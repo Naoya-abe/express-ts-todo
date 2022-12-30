@@ -51,7 +51,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
-              examples: {}
+              examples:
+                Example 1:
+                  value:
+                    id: 1
+                    title: ランニング
+                    details: 毎朝6時に起きてランニングをする。
       operationId: get-todo
       description: 指定されたidのTodoを取得
     patch:
@@ -64,6 +69,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
+              examples:
+                Example 1:
+                  value:
+                    id: 1
+                    title: ランニング
+                    details: 毎朝6時に起きてランニングをする。
       tags:
         - todo
       description: 指定されたidのTodoを編集
@@ -119,7 +130,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
-              examples: {}
+              examples:
+                Example 1:
+                  value:
+                    id: 1
+                    title: ランニング
+                    details: 毎朝6時に起きてランニングをする。
       tags:
         - todo
       description: 新規にTodoを作成
