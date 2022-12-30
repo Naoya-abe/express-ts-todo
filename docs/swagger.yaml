@@ -14,6 +14,134 @@ servers:
   - url: 'https://api.sample-server.com/v1'
     description: Production server
 paths:
+  /todos:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+              examples:
+                Example 1:
+                  value:
+                    - id: 1
+                      title: ランニング
+                      details: 毎朝6時にランニングをする。
+                    - id: 2
+                      title: 英会話
+                      details: 毎日就業後に英会話をする。
+      operationId: get-todos
+      description: Todo一覧の取得
+  '/todo/{todoId}':
+    get:
+      summary: Your GET endpoint
+      tags:
+        - todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+              examples: {}
+      operationId: get-todo
+      description: 指定されたidのTodoを取得
+    patch:
+      summary: ''
+      operationId: patch-todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+      tags:
+        - todo
+      description: 指定されたidのTodoを編集
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                details:
+                  type: string
+            examples:
+              Example 1:
+                value:
+                  title: 英会話
+                  details: 毎日就業後に英会話をする。
+    delete:
+      summary: ''
+      operationId: delete-todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+              examples:
+                Example 1:
+                  value:
+                    id: 1
+      tags:
+        - todo
+      description: 指定されたidのTodoを削除
+    parameters:
+      - schema:
+          type: integer
+        name: todoId
+        in: path
+        required: true
+  /todo:
+    post:
+      summary: ''
+      operationId: post-todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+              examples: {}
+      tags:
+        - todo
+      description: 新規にTodoを作成
 tags:
   - name: todo
     description: todo関連のAPI
+components:
+  schemas:
+    Todo:
+      title: Todo
+      x-stoplight:
+        id: sr3f67842zscf
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        details:
+          type: string
+      x-examples:
+        Example 1:
+          id: 1
+          title: ランニング
+          details: 毎朝6時に起きてランニングをする。
