@@ -12,10 +12,39 @@ services:
     command: npm run dev
     # ローカルPCの8080番ポートとDockerコンテナの8080番ポートを接続する
     ports:
+      # expressアプリケーションにつながるポート
       - 8080:8080
+      # prisma studioにつながるポート
+      - 5555:5555
+    # 利用するDockerNetworkを指定
+    networks:
+      - express-ts-todo-nw
+    # dbコンテナ起動後にappコンテナを起動させる
+    depends_on:
+      - db
+  db:
+    # 公式のイメージを利用(M1チップ用)
+    image: arm64v8/mysql:8.0
+    # コンテナの名前を設定
+    container_name: express-ts-todo-db
+    # ローカルPCの3307番ポートとDockerコンテナの3306番ポートを接続する
+    ports:
+      - 3307:3306
+    # DBに設定する値
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: express-ts-todo-db
+      MYSQL_PASSWORD: root
+      TZ: 'Asia/Tokyo'
+    # DBのデータをvolumeに移しデータを永続化する
+    volumes:
+      - express-ts-todo-volume:/var/lib/mysql
     # 利用するDockerNetworkを指定
     networks:
       - express-ts-todo-nw
 # Docker上で本コンテナが設置されるNetworkを作成
 networks:
   express-ts-todo-nw:
+# MySQLに保存したデータを永続化する場所
+volumes:
+  express-ts-todo-volume:
