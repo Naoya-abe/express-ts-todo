@@ -29,11 +29,21 @@
 - [OCI runtime exec failed: exec failed: container_linux.go:344: starting container process](https://stackoverflow.com/questions/55378420/oci-runtime-exec-failed-exec-failed-container-linux-go344-starting-container)
 - [CPUアーキテクチャの種類(x86, x64, arm)](https://www.wakuwakubank.com/posts/809-it-cpu-x86-x64-arm/)
 - [Architectures other than amd64?](https://github.com/docker-library/official-images#architectures-other-than-amd64)
+- [M1 mac で MySQL コンテナを使う方法](https://toyo.hatenablog.jp/entry/2022/03/02/234159)
+- [Docker上でMySQLデータを永続化する](https://kiyobl.com/docker-mysql-persistence/)
+- [dockerのコンテナの中に入る](https://qiita.com/Keitaroooo/items/a30bf4eb9310d7b3f7cd)
+
+## Prisma関連
+- [PrismaDocs-GerStarted](https://www.prisma.io/docs/getting-started)
+- [PrismaDocs-CRUD](https://www.prisma.io/docs/concepts/components/prisma-client/crud)
+- [DockerでPrismaのマイグレーションが実行できない](https://qiita.com/Ryo9597/questions/17fbcac39569b580e677)
+- [Can't reach database server at postgres:5432](https://github.com/prisma/prisma/issues/14013)
 
 ## Terraform関連
 - [【Terraform 入門】AWS の VPC と EC2 を構築してみる](https://kacfg.com/terraform-vpc-ec2/)
 
 ## その他
+- [PostmanでJSONを送信する](https://e-seventh.com/postman-post-json/)
 - [shields.ioを使って技術系アイコンを量産した](https://qiita.com/s-yoshiki/items/436bbe1f7160b610b05c)
 - [AWS Amplify × Next.js で Server Side Rendering のデプロイおよび CI/CD 環境を構築する](https://whnyab.com/amplify-ssr-cicd/)
 - [Amplify Console と CloudFront+S3 のユースケースの違い](https://go-to-k.hatenablog.com/entry/2021/08/08/022528)
