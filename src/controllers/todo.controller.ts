@@ -11,16 +11,19 @@ const createTodo = (req: Request, res: Response) => {
 };
 
 /* GET Method */
-const getTodoList = (req: Request, res: Response) => {
+const getTodoList = async (req: Request, res: Response) => {
 	try {
-		res.status(200).json(todoModel.getTodoList());
+		res.status(200).json(await todoModel.getTodoList());
 	} catch (error) {
 		console.error('Todo一覧の取得に失敗しました。');
 	}
 };
-const getTodo = (req: Request, res: Response) => {
+const getTodo = async (req: Request, res: Response) => {
+	console.log(req.params);
+
+	const todoId = Number(req.params.todoId);
 	try {
-		res.status(200).json(todoModel.getTodo());
+		res.status(200).json(await todoModel.getTodo(todoId));
 	} catch (error) {
 		console.error('Todoの取得に失敗しました。');
 	}
