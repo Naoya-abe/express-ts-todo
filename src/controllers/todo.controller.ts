@@ -2,9 +2,12 @@ import { Request, Response } from 'express';
 import todoModel from '../models/todo.model';
 
 /* POST Method */
-const createTodo = (req: Request, res: Response) => {
+const createTodo = async (req: Request, res: Response) => {
+	const title: string = req.body.title;
+	const details: string | undefined = req.body.details;
+	const body = { title, details };
 	try {
-		res.status(200).json(todoModel.createTodo());
+		res.status(200).json(await todoModel.createTodo(body));
 	} catch (error) {
 		console.error('Todoの作成に失敗しました。');
 	}
@@ -19,8 +22,6 @@ const getTodoList = async (req: Request, res: Response) => {
 	}
 };
 const getTodo = async (req: Request, res: Response) => {
-	console.log(req.params);
-
 	const todoId = Number(req.params.todoId);
 	try {
 		res.status(200).json(await todoModel.getTodo(todoId));
