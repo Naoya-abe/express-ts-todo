@@ -44,9 +44,10 @@ const patchTodo = async (req: Request, res: Response) => {
 };
 
 /* DELETE Method */
-const deleteTodo = (req: Request, res: Response) => {
+const deleteTodo = async (req: Request, res: Response) => {
+	const todoId = Number(req.params.todoId);
 	try {
-		res.status(200).json(todoModel.deleteTodo());
+		res.status(200).json(await todoModel.deleteTodo(todoId));
 	} catch (error) {
 		console.error('Todoの削除に失敗しました。');
 	}

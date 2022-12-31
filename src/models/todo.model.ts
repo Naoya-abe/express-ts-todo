@@ -69,8 +69,20 @@ const patchTodo = async (
 };
 
 /* DELETE Method */
-const deleteTodo = () => {
-	return { message: 'deleteTodo' };
+const deleteTodo = async (todoId: number) => {
+	try {
+		const todo = await prisma.todo.delete({
+			where: {
+				id: todoId
+			}
+		});
+		await prisma.$disconnect();
+		return todo.id;
+	} catch (error) {
+		console.log(error);
+		await prisma.$disconnect();
+		process.exit(1);
+	}
 };
 
 const todoModel = { createTodo, getTodoList, getTodo, patchTodo, deleteTodo };
