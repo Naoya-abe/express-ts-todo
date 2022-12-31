@@ -31,9 +31,13 @@ const getTodo = async (req: Request, res: Response) => {
 };
 
 /* PATCH Method */
-const patchTodo = (req: Request, res: Response) => {
+const patchTodo = async (req: Request, res: Response) => {
+	const todoId = Number(req.params.todoId);
+	const title: string | undefined = req.body.title;
+	const details: string | undefined = req.body.details;
+	const body = { title, details };
 	try {
-		res.status(200).json(todoModel.patchTodo());
+		res.status(200).json(await todoModel.patchTodo(todoId, body));
 	} catch (error) {
 		console.error('Todoの編集に失敗しました。');
 	}
