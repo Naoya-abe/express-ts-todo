@@ -26,7 +26,8 @@ describe('test todo function', () => {
 	test('GET "/todo/list"', async () => {
 		const response = await request(app).get('/todo/list');
 		expect(response.statusCode).toBe(200);
-		expect(response.body[0].title).toBe('sample title');
+		expect(response.body[0].title).toBe('ランニング');
+		expect(response.body.details).toBe('毎朝6時に起きてランニングをする。');
 	});
 	test('GET "/todo/:todoId"', async () => {
 		const response = await request(app).get(`/todo/${todoId}`);
