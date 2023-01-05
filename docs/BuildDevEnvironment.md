@@ -119,13 +119,44 @@ $ docker container exec -it express-ts-todo-app bash
 # 入力するコマンド
 $ npx prisma studio
 
-# コマンドを入力した結果localhost:5555でDBの中身を見ることができる
+# 結果
 Environment variables loaded from .env
 Prisma schema loaded from prisma/schema.prisma
 Prisma Studio is up on http://localhost:5555
 ```
-
 - 実際に`http://localhost:5555`にアクセスして、DBの中身が見れるか確認してください。
+
+## Jestを用いたテストの実行方法
+- アプリケーションが無事に立ち上がったらterminalのタブを別途用意して、以下のコマンドを入力してください
+```
+# 立ち上がっているバックエンドアプリケーションのDockerコンテナに入るコマンド
+$ docker container exec -it express-ts-todo-app bash
+```
+- Dockerコンテナに入ることができたら、以下のコマンドを入力することでJestを用いたテストを実行できます
+```
+# 入力するコマンド
+$ npm run test
+
+# 結果
+> backend@1.0.0 test
+> npx jest
+
+ PASS  tests/app.test.ts
+  test todo function
+    ✓ SAMPLE "/" (14 ms)
+    ✓ POST "/todo (158 ms)
+    ✓ GET "/todo/list" (11 ms)
+    ✓ GET "/todo/:todoId" (11 ms)
+    ✓ PATCH "/todo/:todoId" (14 ms)
+    ✓ DELETE "/todo/:todoId" (12 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        4.592 s, estimated 5 s
+Ran all test suites.
+```
+
 ## CodeFormatter の導入
 
 - 以下の 2 つの拡張機能を VSCode に入れてください

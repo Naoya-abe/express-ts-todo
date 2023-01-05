@@ -77,7 +77,7 @@ const deleteTodo = async (todoId: number) => {
 			}
 		});
 		await prisma.$disconnect();
-		return todo.id;
+		return { id: todo.id };
 	} catch (error) {
 		console.log(error);
 		await prisma.$disconnect();

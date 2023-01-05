@@ -31,12 +31,14 @@ const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const js_yaml_1 = __importDefault(require("js-yaml"));
 const fs = __importStar(require("fs"));
 const path_1 = __importDefault(require("path"));
+const todo_route_1 = __importDefault(require("./routes/todo.route"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 const swaggerPath = path_1.default.resolve(__dirname, '../docs/swagger.yaml');
 const swaggerDocument = js_yaml_1.default.load(fs.readFileSync(swaggerPath, 'utf-8'));
 // @ts-ignore
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument)); // Todo:後々、型定義について修正する
+app.use('/todo', todo_route_1.default);
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'ok' });
 });

@@ -7,7 +7,7 @@ const createTodo = async (req: Request, res: Response) => {
 	const details: string | undefined = req.body.details;
 	const body = { title, details };
 	try {
-		res.status(200).json(await todoModel.createTodo(body));
+		res.status(201).json(await todoModel.createTodo(body));
 	} catch (error) {
 		console.error('Todoの作成に失敗しました。');
 	}
