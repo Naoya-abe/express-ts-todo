@@ -108,6 +108,24 @@ $ docker compose -f docker-compose.dev.yml up
 - [Postman](https://cloudsmith.co.jp/blog/efficient/2021/08/1837085.html)や[RapidApi Client](https://www.youtube.com/watch?v=MTrj3tNf9jA)にて`http://localhost:8080`を入力することで動作確認ができます
 - `http://localhost:8080/api-docs`で API の仕様書を見ることができます
 
+## PrismaStudioを用いたDBの確認
+- アプリケーションが無事に立ち上がったらterminalのタブを別途用意して以下のコマンドを入力してください
+```
+# 立ち上がっているバックエンドアプリケーションのDockerコンテナに入るコマンド
+$ docker container exec -it express-ts-todo-app bash
+```
+- Dockerコンテナに入ることができたら、以下のコマンドの入力しPrismaStudioを立ち上げてください
+```
+# 入力するコマンド
+$ npx prisma studio
+
+# コマンドを入力した結果localhost:5555でDBの中身を見ることができる
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Prisma Studio is up on http://localhost:5555
+```
+
+- 実際に`http://localhost:5555`にアクセスして、DBの中身が見れるか確認してください。
 ## CodeFormatter の導入
 
 - 以下の 2 つの拡張機能を VSCode に入れてください
