@@ -35,7 +35,8 @@ const patchTodo = async (req: Request, res: Response) => {
 	const todoId = Number(req.params.todoId);
 	const title: string | undefined = req.body.title;
 	const details: string | undefined = req.body.details;
-	const body = { title, details };
+	const isDone: boolean | undefined = req.body.isDone;
+	const body = { title, details, isDone };
 	try {
 		res.status(200).json(await todoModel.patchTodo(todoId, body));
 	} catch (error) {

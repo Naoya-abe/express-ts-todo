@@ -27,7 +27,7 @@ describe('test todo function', () => {
 		const response = await request(app).get('/todo/list');
 		expect(response.statusCode).toBe(200);
 		expect(response.body[0].title).toBe('ランニング');
-		expect(response.body.details).toBe('毎朝6時に起きてランニングをする。');
+		expect(response.body[0].details).toBe('毎朝6時に起きてランニングをする。');
 	});
 	test('GET "/todo/:todoId"', async () => {
 		const response = await request(app).get(`/todo/${todoId}`);
@@ -39,11 +39,13 @@ describe('test todo function', () => {
 	test('PATCH "/todo/:todoId"', async () => {
 		const response = await request(app).patch(`/todo/${todoId}`).send({
 			title: '英会話',
-			details: '毎日就業後に英会話をする。'
+			details: '毎日就業後に英会話をする。',
+			isDone: true
 		});
 		expect(response.statusCode).toBe(200);
 		expect(response.body.title).toBe('英会話');
 		expect(response.body.details).toBe('毎日就業後に英会話をする。');
+		expect(response.body.isDone).toBe(true);
 	});
 	/* DELETE Method */
 	test('DELETE "/todo/:todoId"', async () => {

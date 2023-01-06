@@ -47,7 +47,7 @@ const getTodo = async (todoId: number) => {
 /* PATCH Method */
 const patchTodo = async (
 	todoId: number,
-	body: { title?: string; details?: string }
+	body: { title?: string; details?: string; isDone?: boolean }
 ) => {
 	try {
 		const todo = await prisma.todo.update({
@@ -56,7 +56,8 @@ const patchTodo = async (
 			},
 			data: {
 				title: body.title,
-				details: body.details
+				details: body.details,
+				isDone: body.isDone
 			}
 		});
 		await prisma.$disconnect();
