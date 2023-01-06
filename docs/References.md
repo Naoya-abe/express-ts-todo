@@ -7,6 +7,10 @@
 - [Node/Express with Typescript in 3 minutes | How to setup nodejs with typescript tutorial](https://www.youtube.com/watch?v=Fqv2-f1bIls)
 - [ESLint + Prettierを導入したTypeScript開発環境](https://zenn.dev/big_tanukiudon/articles/c1ab3dba7ba111)
 - [dotenv-cli - npm](https://www.npmjs.com/package/dotenv-cli)
+- [エラー処理-公式ドキュメント](https://expressjs.com/ja/guide/error-handling.html)
+- [TypeScript Express tutorial #3. Error handling and validating incoming data](https://wanago.io/2018/12/17/typescript-express-error-handling-validation/)
+- [Expressの冗長なエラー処理を簡潔にする](https://qiita.com/azujuuuuuun/items/f0be4a71aca2d92036aa)
+- [Expressのerror handlingを理解し、middlewareで実装してみた](https://note.com/shift_tech/n/n42b96d36f0cf)
 
 ## Test関連
 - [Webフレームワークのテスト - Jest公式](https://jestjs.io/ja/docs/testing-frameworks)
@@ -37,6 +41,7 @@
 ## Prisma関連
 - [PrismaDocs-GerStarted](https://www.prisma.io/docs/getting-started)
 - [PrismaDocs-CRUD](https://www.prisma.io/docs/concepts/components/prisma-client/crud)
+- [PrismaDocs-Error message reference](https://www.prisma.io/docs/reference/api-reference/error-reference)
 - [DockerでPrismaのマイグレーションが実行できない](https://qiita.com/Ryo9597/questions/17fbcac39569b580e677)
 - [Can't reach database server at postgres:5432](https://github.com/prisma/prisma/issues/14013)
 
