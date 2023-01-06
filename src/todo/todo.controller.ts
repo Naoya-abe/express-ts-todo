@@ -1,4 +1,6 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import GetNotFoundException from '../exceptions/GetNotFoundException';
+import HttpException from '../exceptions/HttpException';
 import todoModel from './todo.model';
 
 /* POST Method */
@@ -21,17 +23,17 @@ const getTodoList = async (req: Request, res: Response) => {
 		console.error('Todo一覧の取得に失敗しました。');
 	}
 };
-const getTodo = async (req: Request, res: Response) => {
+const getTodo = async (req: Request, res: Response, next: NextFunction) => {
 	const todoId = Number(req.params.todoId);
 	try {
 		const todo = await todoModel.getTodo(todoId);
 		if (todo) {
 			res.status(200).json(todo);
 		} else {
-			res.status(404).json({ error: 'Post not found' });
+			throw new GetNotFoundException(todoId);
 		}
 	} catch (error) {
-		res.status(500).json({ error });
+		next(error);
 	}
 };
 

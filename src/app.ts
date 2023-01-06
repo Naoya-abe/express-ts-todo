@@ -4,11 +4,13 @@ import yaml from 'js-yaml';
 import * as fs from 'fs';
 import path from 'path';
 import todoRouter from './todo/todo.route';
-import loggerMiddleware from './middlewares/logger';
+import loggerMiddleware from './middlewares/logger.middleware';
+import errorMiddleware from './middlewares/error.middleware';
 
 const app: Express = express();
 app.use(express.json());
 app.use(loggerMiddleware);
+app.use(errorMiddleware);
 
 const swaggerPath = path.resolve(__dirname, '../docs/swagger.yaml');
 const swaggerDocument = yaml.load(fs.readFileSync(swaggerPath, 'utf-8'));
