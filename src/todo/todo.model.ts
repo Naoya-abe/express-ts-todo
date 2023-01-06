@@ -27,9 +27,8 @@ const getTodoList = async () => {
 		await prisma.$disconnect();
 		return todoList;
 	} catch (error) {
-		console.log(error);
 		await prisma.$disconnect();
-		process.exit(1);
+		throw error;
 	}
 };
 const getTodo = async (todoId: number) => {
@@ -38,9 +37,8 @@ const getTodo = async (todoId: number) => {
 		await prisma.$disconnect();
 		return todo;
 	} catch (error) {
-		console.log(error);
 		await prisma.$disconnect();
-		process.exit(1);
+		throw error;
 	}
 };
 
@@ -63,9 +61,8 @@ const patchTodo = async (
 		await prisma.$disconnect();
 		return todo;
 	} catch (error) {
-		console.log(error);
 		await prisma.$disconnect();
-		process.exit(1);
+		throw error;
 	}
 };
 
@@ -80,9 +77,8 @@ const deleteTodo = async (todoId: number) => {
 		await prisma.$disconnect();
 		return { id: todo.id };
 	} catch (error) {
-		console.log(error);
 		await prisma.$disconnect();
-		process.exit(1);
+		throw error;
 	}
 };
 
