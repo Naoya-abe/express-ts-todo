@@ -3,7 +3,7 @@ import swaggerUi from 'swagger-ui-express';
 import yaml from 'js-yaml';
 import * as fs from 'fs';
 import path from 'path';
-import todoRouter from './routes/todo.route';
+import todoRouter from './todo/todo.route';
 import loggerMiddleware from './middlewares/logger';
 
 const app: Express = express();

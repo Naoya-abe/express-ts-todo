@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import todoModel from '../models/todo.model';
+import todoModel from './todo.model';
 
 /* POST Method */
 const createTodo = async (req: Request, res: Response) => {
@@ -24,9 +24,14 @@ const getTodoList = async (req: Request, res: Response) => {
 const getTodo = async (req: Request, res: Response) => {
 	const todoId = Number(req.params.todoId);
 	try {
-		res.status(200).json(await todoModel.getTodo(todoId));
+		const todo = await todoModel.getTodo(todoId);
+		if (todo) {
+			res.status(200).json(todo);
+		} else {
+			res.status(404).json({ error: 'Post not found' });
+		}
 	} catch (error) {
-		console.error('Todoの取得に失敗しました。');
+		res.status(500).json({ error });
 	}
 };
 
