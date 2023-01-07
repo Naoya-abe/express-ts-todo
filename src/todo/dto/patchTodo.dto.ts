@@ -1,17 +1,17 @@
 import { IsBoolean, isBoolean, IsOptional, IsString } from 'class-validator';
 
-class CreateTodoDto {
+class PatchTodoDto {
 	@IsString()
 	@IsOptional()
-	title?: string;
+	public title?: string;
 
 	@IsString()
 	@IsOptional()
-	details?: string;
+	public details?: string;
 
 	@IsBoolean()
 	@IsOptional()
-	isDone?: boolean;
+	public isDone?: boolean;
 }
 
-export default CreateTodoDto;
+export default PatchTodoDto;

@@ -1,5 +1,13 @@
 # 参考記事一覧
 
+## JS/TS関連
+- [Object.values()](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/values)
+- [Array.prototype.join()](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+- [【JavaScript入門】joinで配列を連結する方法(改行/置換)](https://www.sejuku.net/blog/23137)
+- [【TypeScript】Generics(ジェネリックス)を理解する](https://qiita.com/k-penguin-sato/items/9baa959e8919157afcd4)
+- [How To Make An Arrow Function Generic In TypeScript?](https://timmousk.com/blog/typescript-arrow-function-generic/)
+- [class transformer を TypeScript と一緒に使う | 使い方 ネストオブジェクトも](https://kiyobl.com/class-transformer/)
+
 ## Express.js関連
 - [Organizing your Express.js project structure for better productivity](https://blog.logrocket.com/organizing-express-js-project-structure-better-productivity/)
 - [[Node.js] Express のプログラムを ES6 の構文で記述する方法](https://mseeeen.msen.jp/express-for-es6/)

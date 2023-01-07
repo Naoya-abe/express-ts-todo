@@ -3,11 +3,11 @@ import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 class CreateTodoDto {
 	@IsString()
 	@IsNotEmpty()
-	title: string;
+	public title: string;
 
 	@IsString()
 	@IsOptional()
-	details?: string;
+	public details?: string;
 }
 
 export default CreateTodoDto;

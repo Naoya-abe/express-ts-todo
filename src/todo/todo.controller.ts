@@ -5,6 +5,8 @@ import todoModel from './todo.model';
 
 /* POST Method */
 const createTodo = async (req: Request, res: Response, next: NextFunction) => {
+	console.log(req.body);
+
 	const title: string = req.body.title;
 	const details: string | undefined = req.body.details;
 	const body = { title, details };
