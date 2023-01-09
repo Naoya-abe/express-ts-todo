@@ -20,6 +20,6 @@ export class PatchTodoRequestDto {
 	public details?: string;
 
 	@IsBoolean()
-	@IsOptional()
-	public isDone?: boolean;
+	@IsNotEmpty()
+	public isDone: boolean;
 }
