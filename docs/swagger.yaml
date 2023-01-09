@@ -40,86 +40,6 @@ paths:
       operationId: get-todo-list
       description: Todo一覧の取得
     parameters: []
-  '/todo/{todoId}':
-    get:
-      summary: Your GET endpoint
-      tags:
-        - todo
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todo'
-              examples:
-                Example 1:
-                  value:
-                    id: 1
-                    title: ランニング
-                    details: 毎朝6時に起きてランニングをする。
-      operationId: get-todo
-      description: 指定されたidのTodoを取得
-    patch:
-      summary: ''
-      operationId: patch-todo
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todo'
-              examples:
-                Example 1:
-                  value:
-                    id: 1
-                    title: ランニング
-                    details: 毎朝6時に起きてランニングをする。
-      tags:
-        - todo
-      description: 指定されたidのTodoを編集
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                details:
-                  type: string
-            examples:
-              Example 1:
-                value:
-                  title: 英会話
-                  details: 毎日就業後に英会話をする。
-    delete:
-      summary: ''
-      operationId: delete-todo
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-              examples:
-                Example 1:
-                  value:
-                    id: 1
-      tags:
-        - todo
-      description: 指定されたidのTodoを削除
-    parameters:
-      - schema:
-          type: integer
-        name: todoId
-        in: path
-        required: true
   /todo:
     post:
       summary: ''
@@ -157,6 +77,83 @@ paths:
                 value:
                   title: ランニング
                   details: 毎朝6時に起きてランニングをする。
+    get:
+      summary: ''
+      operationId: get-todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+      description: 指定されたidのTodoを取得
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                todoId:
+                  type: string
+              required:
+                - todoId
+      tags:
+        - todo
+    patch:
+      summary: ''
+      operationId: patch-todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+      tags:
+        - todo
+      description: 指定されたidのTodoを編集
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                todoId:
+                  type: string
+                title:
+                  type: string
+                details:
+                  type: string
+                isDone:
+                  type: boolean
+              required:
+                - todoId
+                - title
+                - isDone
+    delete:
+      summary: ''
+      operationId: delete-todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+      description: 指定されたidのTodoを削除
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                todoId:
+                  type: string
+              required:
+                - todoId
+      tags:
+        - todo
 tags:
   - name: todo
     description: todo関連のAPI
@@ -167,6 +164,12 @@ components:
       x-stoplight:
         id: sr3f67842zscf
       type: object
+      x-examples:
+        Example 1:
+          id: 1
+          title: ランニング
+          details: 毎朝6時に起きてランニングをする。
+          isDone: false
       properties:
         id:
           type: integer
@@ -174,8 +177,9 @@ components:
           type: string
         details:
           type: string
-      x-examples:
-        Example 1:
-          id: 1
-          title: ランニング
-          details: 毎朝6時に起きてランニングをする。
+        isDone:
+          type: boolean
+      required:
+        - id
+        - title
+        - isDone
