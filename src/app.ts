@@ -9,7 +9,7 @@ import errorMiddleware from './middlewares/error.middleware';
 
 const app: Express = express();
 app.use(express.json());
-app.use(loggerMiddleware);
+// app.use(loggerMiddleware);
 app.use(errorMiddleware);
 
 const swaggerPath = path.resolve(__dirname, '../docs/swagger.yaml');

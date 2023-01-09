@@ -141,19 +141,28 @@ $ npm run test
 > backend@1.0.0 test
 > npx jest
 
- PASS  tests/app.test.ts
+ PASS  tests/app.test.ts (5.175 s)
   test todo function
-    ✓ SAMPLE "/" (14 ms)
-    ✓ POST "/todo (158 ms)
-    ✓ GET "/todo/list" (11 ms)
-    ✓ GET "/todo/:todoId" (11 ms)
-    ✓ PATCH "/todo/:todoId" (14 ms)
-    ✓ DELETE "/todo/:todoId" (12 ms)
+    ✓ Sample GET "/" (12 ms)
+    ✓ Pass empty title to POST "/todo" (46 ms)
+    ✓ Success POST "/todo" (91 ms)
+    ✓ Success GET "/todo/list" (10 ms)
+    ✓ Pass empty body to GET "/todo" (2 ms)
+    ✓ Pass todoId in string to GET "/todo" (2 ms)
+    ✓ Success GET "/todo" (10 ms)
+    ✓ Pass empty body to PATCH "/todo" (2 ms)
+    ✓ Pass empty todoId to PATCH "/todo" (3 ms)
+    ✓ Pass todoId in string to PATCH "/todo" (2 ms)
+    ✓ Pass empty title to PATCH "/todo" (3 ms)
+    ✓ Pass empty isDone to PATCH "/todo" (3 ms)
+    ✓ Success PATCH "/todo" (14 ms)
+    ✓ Pass empty body to DELETE "/todo" (3 ms)
+    ✓ Success DELETE "/todo" (17 ms)
 
 Test Suites: 1 passed, 1 total
-Tests:       6 passed, 6 total
+Tests:       15 passed, 15 total
 Snapshots:   0 total
-Time:        4.592 s, estimated 5 s
+Time:        5.422 s, estimated 6 s
 Ran all test suites.
 ```
 
