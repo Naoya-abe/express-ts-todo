@@ -59,6 +59,7 @@ paths:
                     id: 1
                     title: ランニング
                     details: 毎朝6時に起きてランニングをする。
+                    isDone: false
       tags:
         - todo
       description: 新規にTodoを作成
@@ -89,6 +90,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
+              examples:
+                Example 1:
+                  value:
+                    id: 1
+                    title: ランニング
+                    details: 毎朝6時に起きてランニングをする。
+                    isDone: false
       description: 指定されたidのTodoを取得
       requestBody:
         content:
@@ -97,9 +105,13 @@ paths:
               type: object
               properties:
                 todoId:
-                  type: string
+                  type: integer
               required:
                 - todoId
+            examples:
+              Example 1:
+                value:
+                  todoId: 1
       tags:
         - todo
     patch:
@@ -112,6 +124,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
+              examples:
+                Example 1:
+                  value:
+                    id: 1
+                    title: ランニング
+                    details: 毎朝6時に起きてランニングをする。
+                    isDone: false
       tags:
         - todo
       description: 指定されたidのTodoを編集
@@ -122,7 +141,7 @@ paths:
               type: object
               properties:
                 todoId:
-                  type: string
+                  type: integer
                 title:
                   type: string
                 details:
@@ -133,6 +152,13 @@ paths:
                 - todoId
                 - title
                 - isDone
+            examples:
+              Example 1:
+                value:
+                  todoId: 1
+                  title: ランニング
+                  details: 毎朝6時に起きてランニングをする。
+                  isDone: false
     delete:
       summary: ''
       operationId: delete-todo
@@ -143,6 +169,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
+              examples:
+                Example 1:
+                  value:
+                    id: 1
+                    title: ランニング
+                    details: 毎朝6時に起きてランニングをする。
+                    isDone: false
       description: 指定されたidのTodoを削除
       requestBody:
         content:
@@ -151,9 +184,13 @@ paths:
               type: object
               properties:
                 todoId:
-                  type: string
+                  type: integer
               required:
                 - todoId
+            examples:
+              Example 1:
+                value:
+                  todoId: 1
       tags:
         - todo
 tags:
