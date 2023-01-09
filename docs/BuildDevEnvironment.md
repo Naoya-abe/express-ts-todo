@@ -34,42 +34,42 @@ git version 2.21.1 (Apple Git-122.3)
 - 今回は nvm を用いて Node.js のインストール/バージョン管理を行います
 - 以下のサイトを参考に nvm をインストールしてください
 - [nvm(Node Version Manager)を使って Node.js をインストールする手順](https://qiita.com/ffggss/items/94f1c4c5d311db2ec71a)
-- nvm のインストールが完了したら 2022 年 12 月 3 日時点では Node.js の LTS が v18.12.1 のため以下のコマンドを入力して v18.12.1 の Node.js をインストールしてください。
+- nvm のインストールが完了したら 2022 年 1 月 9 日時点では Node.js の LTS が v18.13.0 のため以下のコマンドを入力して v18.13.0 の Node.js をインストールしてください。
 
 ```
-$ nvm install 18.12.1
+$ nvm install 18.13.0
 ----以下、実行結果----
-Downloading and installing node v18.12.1...
-Downloading https://nodejs.org/dist/v18.12.1/node-v18.12.1-darwin-x64.tar.xz...
+Downloading and installing node v18.13.0...
+Downloading https://nodejs.org/dist/v18.13.0/node-v18.13.0-darwin-x64.tar.xz...
 ########################################################################################################################################################################### 100.0%
 Computing checksum with shasum -a 256
 Checksums matched!
-Now using node v18.12.1 (npm v8.19.2)
-Creating default alias: default -> 18.12.1 (-> v18.12.1)
+Now using node v18.13.0 (npm v8.19.2)
+Creating default alias: default -> 18.13.0 (-> v18.13.0)
 --------------------
 ```
 
-- 以下のコマンドを入力して Node.js の v18.12.1 が使用されていることを確認してください。
+- 以下のコマンドを入力して Node.js の v18.13.0 が使用されていることを確認してください。
 
 ```
 $ node -v
 ----以下、実行結果----
-v18.12.1
+v18.13.0
 --------------------
 ```
 
-- 上記タイミングで v18.12.1 以外が出る場合は以下のコマンドを入力して Node.js のバージョンを切り替えてください
+- 上記タイミングで v18.13.0 以外が出る場合は以下のコマンドを入力して Node.js のバージョンを切り替えてください
 
 ```
 $ nvm ls
-----以下、実行結果(v18.12.1がインストールされていることを確認)-------
-->     v18.12.1
-default -> 18.12.1 (-> v18.12.1)
+----以下、実行結果(v18.13.0がインストールされていることを確認)-------
+->     v18.13.0
+default -> 18.13.0 (-> v18.13.0)
 iojs -> N/A (default)
 unstable -> N/A (default)
-node -> stable (-> v18.12.1) (default)
-stable -> 18.12 (-> v18.12.1) (default)
-lts/* -> lts/hydrogen (-> v18.12.1)
+node -> stable (-> v18.13.0) (default)
+stable -> 18.12 (-> v18.13.0) (default)
+lts/* -> lts/hydrogen (-> v18.13.0)
 lts/argon -> v4.9.1 (-> N/A)
 lts/boron -> v6.17.1 (-> N/A)
 lts/carbon -> v8.17.0 (-> N/A)
@@ -77,12 +77,12 @@ lts/dubnium -> v10.24.1 (-> N/A)
 lts/erbium -> v12.22.12 (-> N/A)
 lts/fermium -> v14.21.1 (-> N/A)
 lts/gallium -> v16.18.1 (-> N/A)
-lts/hydrogen -> v18.12.1
+lts/hydrogen -> v18.13.0
 ------------------------------------------------------------
 
-$ nvm use 18.12.1
-----以下、実行結果(使用するNode.jsのバージョンをv18.12.1に変更)----
-Now using node v18.12.1 (npm v8.19.2)
+$ nvm use 18.13.0
+----以下、実行結果(使用するNode.jsのバージョンをv18.13.0に変更)----
+Now using node v18.13.0 (npm v8.19.2)
 ------------------------------------------------------------
 ```
 

@@ -1,7 +1,9 @@
 # Dockerイメージの元となるOfficialイメージをDockerHubより取得(個人PCではarm64のプロセッサ用のイメージを使う)
-FROM arm64v8/node:18.12.1
+FROM arm64v8/node:18.13.0
+# IntelチップのMacではおそらく以下のFROMコマンドを使う（未検証）
+# FROM node:18.13.0
 
-# Docker内のdid-vc-proto1-backendで作業をすることを指定（該当のdirectoryが無いときは作成する）
+# Docker内のexpress-ts-todoで作業をすることを指定（該当のdirectoryが無いときは作成する）
 WORKDIR /express-ts-todo
 
 # Install app dependencies
