@@ -4,12 +4,9 @@
 ![](https://img.shields.io/badge/-TypeScript_v4.9.4-ffffff?logo=TypeScript)
 ![](https://img.shields.io/badge/-Express.js_v4.18.2-000000?logo=Express)
 ![](https://img.shields.io/badge/-Docker-003f8c?logo=Docker)
-![](https://img.shields.io/badge/-MySQL-f29221?logo=MySQL)
+![](https://img.shields.io/badge/-MySQL_v8.0-f29221?logo=MySQL)
 
 express-ts-todoのコードを管理するためのリポジトリです。<br/>
-ディレクトリ構成はこちらのサイトを参考にしています。（[リンク](https://blog.logrocket.com/organizing-express-js-project-structure-better-productivity/)）
-
-
 
 # 各種リンク
 - [開発環境構築方法リンク](https://github.com/Naoya-abe/express-ts-todo/blob/main/docs/BuildDevEnvironment.md)
