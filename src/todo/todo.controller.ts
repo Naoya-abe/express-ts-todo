@@ -1,38 +1,50 @@
 import { NextFunction, Request, Response } from 'express';
 import HttpException from '../exceptions/HttpException';
 import NotFoundException from '../exceptions/NotFoundException';
+import { TypedRequestBody } from '../utils/types/TypedRequest';
+import { CreateTodoRequestDto } from './dto/createTodo.dto';
+import { GetTodoRequestDto } from './dto/getTodo.dto';
+import { PatchTodoRequestDto } from './dto/patchTodo.dto';
+import { DeleteTodoRequestDto } from './dto/deleteTodo.dto';
 import todoModel from './todo.model';
+import { Todo } from '@prisma/client';
 
 /* POST Method */
-const createTodo = async (req: Request, res: Response, next: NextFunction) => {
-	console.log(req.body);
-
-	const title: string = req.body.title;
-	const details: string | undefined = req.body.details;
-	const body = { title, details };
+const createTodo = async (
+	req: TypedRequestBody<CreateTodoRequestDto>,
+	res: Response<Todo>,
+	next: NextFunction
+) => {
 	try {
-		res.status(201).json(await todoModel.createTodo(body));
+		res.status(201).json(await todoModel.createTodo(req.body));
 	} catch (error) {
 		next(error);
 	}
 };
 
 /* GET Method */
-const getTodoList = async (req: Request, res: Response, next: NextFunction) => {
+const getTodoList = async (
+	req: Request,
+	res: Response<Todo[]>,
+	next: NextFunction
+) => {
 	try {
 		res.status(200).json(await todoModel.getTodoList());
 	} catch (error) {
 		next(error);
 	}
 };
-const getTodo = async (req: Request, res: Response, next: NextFunction) => {
-	const todoId = Number(req.params.todoId);
+const getTodo = async (
+	req: TypedRequestBody<GetTodoRequestDto>,
+	res: Response<Todo>,
+	next: NextFunction
+) => {
 	try {
-		const todo = await todoModel.getTodo(todoId);
+		const todo = await todoModel.getTodo(req.body.todoId);
 		if (todo) {
 			res.status(200).json(todo);
 		} else {
-			throw new NotFoundException(todoId);
+			throw new NotFoundException(req.body.todoId);
 		}
 	} catch (error) {
 		next(error);
@@ -40,18 +52,17 @@ const getTodo = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 /* PATCH Method */
-const patchTodo = async (req: Request, res: Response, next: NextFunction) => {
-	const todoId = Number(req.params.todoId);
-	const title: string | undefined = req.body.title;
-	const details: string | undefined = req.body.details;
-	const isDone: boolean | undefined = req.body.isDone;
-	const body = { title, details, isDone };
+const patchTodo = async (
+	req: TypedRequestBody<PatchTodoRequestDto>,
+	res: Response<Todo>,
+	next: NextFunction
+) => {
 	try {
-		const todo = await todoModel.patchTodo(todoId, body);
+		const todo = await todoModel.patchTodo(req.body);
 		res.status(200).json(todo);
 	} catch (error: any) {
 		if (error.code === 'P2025') {
-			next(new NotFoundException(todoId));
+			next(new NotFoundException(req.body.todoId));
 		} else {
 			next(new HttpException(500, 'Something went wrong.'));
 		}
@@ -59,14 +70,17 @@ const patchTodo = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 /* DELETE Method */
-const deleteTodo = async (req: Request, res: Response, next: NextFunction) => {
-	const todoId = Number(req.params.todoId);
+const deleteTodo = async (
+	req: TypedRequestBody<DeleteTodoRequestDto>,
+	res: Response<Todo>,
+	next: NextFunction
+) => {
 	try {
-		const response = await todoModel.deleteTodo(todoId);
+		const response = await todoModel.deleteTodo(req.body.todoId);
 		res.status(200).json(response);
 	} catch (error: any) {
 		if (error.code === 'P2025') {
-			next(new NotFoundException(todoId));
+			next(new NotFoundException(req.body.todoId));
 		} else {
 			next(new HttpException(500, 'Something went wrong.'));
 		}

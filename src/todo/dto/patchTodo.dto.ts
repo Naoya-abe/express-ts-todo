@@ -1,9 +1,19 @@
-import { IsBoolean, isBoolean, IsOptional, IsString } from 'class-validator';
+import {
+	IsBoolean,
+	IsNotEmpty,
+	IsNumber,
+	IsOptional,
+	IsString
+} from 'class-validator';
 
-class PatchTodoDto {
+export class PatchTodoRequestDto {
+	@IsNumber()
+	@IsNotEmpty()
+	public todoId: number;
+
 	@IsString()
-	@IsOptional()
-	public title?: string;
+	@IsNotEmpty()
+	public title: string;
 
 	@IsString()
 	@IsOptional()
@@ -13,5 +23,3 @@ class PatchTodoDto {
 	@IsOptional()
 	public isDone?: boolean;
 }
-
-export default PatchTodoDto;

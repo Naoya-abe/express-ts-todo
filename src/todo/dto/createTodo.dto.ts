@@ -1,6 +1,12 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+	IsBoolean,
+	IsNotEmpty,
+	IsNumber,
+	IsOptional,
+	IsString
+} from 'class-validator';
 
-class CreateTodoDto {
+export class CreateTodoRequestDto {
 	@IsString()
 	@IsNotEmpty()
 	public title: string;
@@ -9,5 +15,3 @@ class CreateTodoDto {
 	@IsOptional()
 	public details?: string;
 }
-
-export default CreateTodoDto;

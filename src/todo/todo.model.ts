@@ -1,9 +1,11 @@
 import { PrismaClient } from '@prisma/client';
+import { CreateTodoRequestDto } from './dto/createTodo.dto';
+import { PatchTodoRequestDto } from './dto/patchTodo.dto';
 
 const prisma = new PrismaClient();
 
 /* POST Method */
-const createTodo = async (body: { title: string; details?: string }) => {
+const createTodo = async (body: CreateTodoRequestDto) => {
 	try {
 		const todo = await prisma.todo.create({
 			data: {
@@ -43,14 +45,11 @@ const getTodo = async (todoId: number) => {
 };
 
 /* PATCH Method */
-const patchTodo = async (
-	todoId: number,
-	body: { title?: string; details?: string; isDone?: boolean }
-) => {
+const patchTodo = async (body: PatchTodoRequestDto) => {
 	try {
 		const todo = await prisma.todo.update({
 			where: {
-				id: todoId
+				id: body.todoId
 			},
 			data: {
 				title: body.title,
@@ -75,7 +74,7 @@ const deleteTodo = async (todoId: number) => {
 			}
 		});
 		await prisma.$disconnect();
-		return { id: todo.id };
+		return todo;
 	} catch (error) {
 		await prisma.$disconnect();
 		throw error;

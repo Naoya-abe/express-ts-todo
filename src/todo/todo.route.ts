@@ -1,7 +1,9 @@
 import express from 'express';
 import validationMiddleware from '../middlewares/validation.middleware';
-import CreateTodoDto from './dto/createTodo.dto';
-import PatchTodoDto from './dto/patchTodo.dto';
+import { CreateTodoRequestDto } from './dto/createTodo.dto';
+import { GetTodoRequestDto } from './dto/getTodo.dto';
+import { PatchTodoRequestDto } from './dto/patchTodo.dto';
+import { DeleteTodoRequestDto } from './dto/deleteTodo.dto';
 import todoController from './todo.controller';
 
 const todoRouter = express.Router();
@@ -9,22 +11,30 @@ const todoRouter = express.Router();
 /* POST Method */
 todoRouter.post(
 	'/',
-	validationMiddleware(CreateTodoDto),
+	validationMiddleware(CreateTodoRequestDto),
 	todoController.createTodo
 );
 
 /* GET Method */
 todoRouter.get('/list', todoController.getTodoList);
-todoRouter.get('/:todoId', todoController.getTodo);
+todoRouter.get(
+	'/',
+	validationMiddleware(GetTodoRequestDto),
+	todoController.getTodo
+);
 
 /* PATCH Method */
 todoRouter.patch(
-	'/:todoId',
-	validationMiddleware(PatchTodoDto),
+	'/',
+	validationMiddleware(PatchTodoRequestDto),
 	todoController.patchTodo
 );
 
 /* DELETE Method */
-todoRouter.delete('/:todoId', todoController.deleteTodo);
+todoRouter.delete(
+	'/',
+	validationMiddleware(DeleteTodoRequestDto),
+	todoController.deleteTodo
+);
 
 export default todoRouter;
