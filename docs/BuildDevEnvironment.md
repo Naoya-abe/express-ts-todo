@@ -96,7 +96,78 @@ $ git clone https://github.com/Naoya-abe/express-ts-todo.git
 
 ## アプリケーションの立ち上げ
 
-- アプリケーションの clone が完了したら以下のコマンドを入力することで`http://localhost:8080`でアプリケーションが立ち上がります
+### IntelチップのMacBookを使っている人向け
+- `docker-compose.dev.yml`で以下の修正をしてください
+```
+修正前(25-29行目あたり)
+db:
+    # 公式のイメージを利用(M1チップ用)
+    image: arm64v8/mysql:8.0
+    # IntelチップのMacでは以下のimageを指定する
+    # image: mysql:8.0
+```
+```
+修正後(25-29行目あたり)
+db:
+    # 公式のイメージを利用(M1チップ用)
+    # image: arm64v8/mysql:8.0
+    # IntelチップのMacでは以下のimageを指定する
+    image: mysql:8.0
+```
+- `Dockerfile`で以下の修正をしてください
+```
+修正前(1-4行目あたり)
+# Dockerイメージの元となるOfficialイメージをDockerHubより取得(個人PCではarm64のプロセッサ用のイメージを使う)
+FROM arm64v8/node:18.13.0
+# IntelチップのMacでは以下のFROMコマンドを使う
+# FROM node:18.13.0
+```
+```
+修正後(1-4行目あたり)
+# Dockerイメージの元となるOfficialイメージをDockerHubより取得(個人PCではarm64のプロセッサ用のイメージを使う)
+# FROM arm64v8/node:18.13.0
+# IntelチップのMacでは以下のFROMコマンドを使う
+FROM node:18.13.0
+```
+- `prisma/schema.prisma`で以下の修正をしてください
+```
+修正前(4-7行目あたり)
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "linux-arm64-openssl-1.1.x"
+}
+```
+```
+修正後(4-7行目あたり)
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "debian-openssl-1.1.x"
+}
+```
+- Docker desktop が立ち上がっていることを確認してから以下のコマンドを入力してください
+```
+$ cd express-ts-todo
+$ npm i
+$ docker compose -f docker-compose.dev.yml up
+```
+- アプリケーションが無事に立ち上がったらterminalのタブを別途用意して、以下のコマンドを入力してください
+```
+# 立ち上がっているバックエンドアプリケーションのDockerコンテナに入るコマンド
+$ docker container exec -it express-ts-todo-app bash
+```
+- 以下のコマンドを入力して`prisma/schema.prisma`の修正を反映させてください
+```
+$ npx prisma generate
+.
+.
+.
+# dockerコンテナから出るコマンド
+$ exit
+```
+- dockerコンテナを一旦停止し、再度立ち上げてください
+- [Postman](https://cloudsmith.co.jp/blog/efficient/2021/08/1837085.html)や[RapidApi Client](https://www.youtube.com/watch?v=MTrj3tNf9jA)にて`http://localhost:8080`を入力することで動作確認ができます
+- `http://localhost:8080/api-docs`で API の仕様書を見ることができます
+### M1チップ以降のMacBookを使っている人向け
 - Docker desktop が立ち上がっていることを確認してから以下のコマンドを入力してください
 
 ```
@@ -114,7 +185,12 @@ $ docker compose -f docker-compose.dev.yml up
 # 立ち上がっているバックエンドアプリケーションのDockerコンテナに入るコマンド
 $ docker container exec -it express-ts-todo-app bash
 ```
-- Dockerコンテナに入ることができたら、以下のコマンドを入力しPrismaStudioを立ち上げてください
+- Dockerコンテナに入ることができたら以下のコマンドを入力し、DBのテーブルを作成してください
+```
+$ npx prisma migrate dev
+```
+
+- 続いて以下のコマンドを入力し、PrismaStudioを立ち上げてください
 ```
 # 入力するコマンド
 $ npx prisma studio

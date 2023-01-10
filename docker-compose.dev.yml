@@ -25,8 +25,8 @@ services:
   db:
     # 公式のイメージを利用(M1チップ用)
     image: arm64v8/mysql:8.0
-    # IntelチップのMacではおそらく以下のFROMコマンドを使う（未検証）
-    # FROM mysql:8.0
+    # IntelチップのMacでは以下のimageを指定する
+    # image: mysql:8.0
 
     # コンテナの名前を設定
     container_name: express-ts-todo-db
