@@ -3,8 +3,8 @@ import swaggerUi from 'swagger-ui-express';
 import yaml from 'js-yaml';
 import * as fs from 'fs';
 import path from 'path';
+import cors from 'cors';
 import todoRouter from './todo/todo.route';
-import loggerMiddleware from './middlewares/logger.middleware';
 import errorMiddleware from './middlewares/error.middleware';
 
 const app: Express = express();
@@ -14,6 +14,11 @@ app.use(errorMiddleware);
 
 const swaggerPath = path.resolve(__dirname, '../docs/swagger.yaml');
 const swaggerDocument = yaml.load(fs.readFileSync(swaggerPath, 'utf-8'));
+app.use(
+	cors({
+		origin: 'http://localhost:3000' //アクセス許可するオリジン
+	})
+);
 // @ts-ignore
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); // Todo:後々、型定義について修正する
 
