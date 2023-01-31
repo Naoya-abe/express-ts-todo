@@ -43,20 +43,18 @@ describe('test todo function', () => {
 	});
 
 	// GET Todo
-	test('Pass empty body to GET "/todo"', async () => {
-		const response = await request(app).get('/todo').send({});
-		expect(response.statusCode).toBe(400);
+	test('Not Found in GET "/todo/:todoId"', async () => {
+		const response = await request(app).get('/todo/100000');
+		expect(response.statusCode).toBe(404);
 	});
-	test('Pass todoId in string to GET "/todo"', async () => {
-		const response = await request(app).get('/todo').send({
-			todoId: '1'
-		});
-		expect(response.statusCode).toBe(400);
-	});
+	// test('Pass todoId in string to GET "/todo"', async () => {
+	// 	const response = await request(app).get('/todo').send({
+	// 		todoId: '1'
+	// 	});
+	// 	expect(response.statusCode).toBe(400);
+	// });
 	test('Success GET "/todo"', async () => {
-		const response = await request(app).get(`/todo`).send({
-			todoId
-		});
+		const response = await request(app).get(`/todo/${todoId}`);
 		expect(response.statusCode).toBe(200);
 		expect(response.body.id).toBe(todoId);
 		expect(response.body.title).toBe('ランニング');

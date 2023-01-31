@@ -134,7 +134,7 @@ FROM node:18.13.0
 修正前(4-7行目あたり)
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = "linux-arm64-openssl-1.1.x"
+  binaryTargets = ["native", "linux-arm64-openssl-1.1.x"]
 }
 ```
 ```
