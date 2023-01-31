@@ -42,7 +42,7 @@ paths:
       operationId: get-todo-list
       description: Todo一覧の取得
     parameters: []
-  /todo:
+  '/todo/:todoId':
     post:
       summary: ''
       operationId: post-todo
@@ -97,21 +97,7 @@ paths:
                     title: ランニング
                     details: 毎朝6時に起きてランニングをする。
                     isDone: false
-      description: 指定されたidのTodoを取得
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                todoId:
-                  type: integer
-              required:
-                - todoId
-            examples:
-              Example 1:
-                value:
-                  todoId: 1
+      description: パスパラメーターで指定されたidのTodoを取得
       tags:
         - todo
     patch:
@@ -193,6 +179,7 @@ paths:
                   todoId: 1
       tags:
         - todo
+    parameters: []
 tags:
   - name: todo
     description: todo関連のAPI
