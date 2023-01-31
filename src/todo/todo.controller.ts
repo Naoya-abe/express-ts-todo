@@ -34,13 +34,15 @@ const getTodoList = async (
 		next(error);
 	}
 };
+
 const getTodo = async (
-	req: TypedRequestBody<GetTodoRequestDto>,
+	req: Request<GetTodoRequestDto>,
 	res: Response<Todo>,
 	next: NextFunction
 ) => {
 	try {
-		const todo = await todoModel.getTodo(req.body.todoId);
+		const todoId = Number(req.params.todoId);
+		const todo = await todoModel.getTodo(todoId);
 		if (todo) {
 			res.status(200).json(todo);
 		} else {

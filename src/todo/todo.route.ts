@@ -17,11 +17,7 @@ todoRouter.post(
 
 /* GET Method */
 todoRouter.get('/list', todoController.getTodoList);
-todoRouter.get(
-	'/',
-	validationMiddleware(GetTodoRequestDto),
-	todoController.getTodo
-);
+todoRouter.get('/:todoId', todoController.getTodo);
 
 /* PATCH Method */
 todoRouter.patch(
