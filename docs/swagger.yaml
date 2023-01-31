@@ -43,6 +43,21 @@ paths:
       description: Todo一覧の取得
     parameters: []
   '/todo/:todoId':
+    get:
+      summary: Your GET endpoint
+      tags:
+        - todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+      operationId: get-todo
+      description: パスパラメーターで指定されたidのTodoを取得
+    parameters: []
+  /todo:
     post:
       summary: ''
       operationId: post-todo
@@ -80,26 +95,6 @@ paths:
                 value:
                   title: ランニング
                   details: 毎朝6時に起きてランニングをする。
-    get:
-      summary: ''
-      operationId: get-todo
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todo'
-              examples:
-                Example 1:
-                  value:
-                    id: 1
-                    title: ランニング
-                    details: 毎朝6時に起きてランニングをする。
-                    isDone: false
-      description: パスパラメーターで指定されたidのTodoを取得
-      tags:
-        - todo
     patch:
       summary: ''
       operationId: patch-todo
